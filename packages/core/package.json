@@ -1,7 +1,7 @@
 {
-  "name": "@measured/puck",
-  "version": "0.16.2",
-  "author": "Measured Corporation Ltd <hello@measured.co>",
+  "name": "pluck-custom",
+  "version": "0.16.2-custom",
+  "author": "DANG NHU HAI",
   "repository": "measuredco/puck",
   "bugs": "https://github.com/measuredco/puck/issues",
   "homepage": "https://puckeditor.com",
