@@ -34,14 +34,7 @@ export const Hero: ComponentConfig<HeroProps> = {
     quote: {
       type: "external",
       placeholder: "Select a quote",
-      showSearch: false,
-      renderFooter: ({ items }) => {
-        return (
-          <div>
-            {items.length} result{items.length === 1 ? "" : "s"}
-          </div>
-        );
-      },
+      showSearch: true,
       filterFields: {
         author: {
           type: "select",
@@ -86,12 +79,9 @@ export const Hero: ComponentConfig<HeroProps> = {
             }
           });
       },
-      mapRow: (item) => ({
-        title: item.title,
-        description: <span>{item.description}</span>,
-      }),
-      mapProp: (result) => {
-        return { index: result.index, label: result.description };
+      mapRow: (item) => ({ title: item.title, description: item.description }),
+      mapProp: (result,filters) => {
+        return { index: result.index, label: result.description ,...filters};
       },
       getItemSummary: (item) => item.label,
     },
@@ -173,7 +163,7 @@ export const Hero: ComponentConfig<HeroProps> = {
    *
    * For example, requesting a third-party API for the latest content.
    */
-  resolveData: async ({ props }, { changed,rootProps }) => {
+  resolveData: async ({ props }, { changed }) => {
     if (!props.quote)
       return { props, readOnly: { title: false, description: false } };
 
