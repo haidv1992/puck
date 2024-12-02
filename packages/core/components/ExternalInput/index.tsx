@@ -41,7 +41,6 @@ export const ExternalInput = ({
   const [isLoading, setIsLoading] = useState(true);
 
   const hasFilterFields = !!filterFields;
-  // @ts-ignore
   const [filters, setFilters] = useState(field.initialFilters || value || {});
   const [filtersToggled, setFiltersToggled] = useState(hasFilterFields);
 
