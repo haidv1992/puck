@@ -80,8 +80,8 @@ export const Hero: ComponentConfig<HeroProps> = {
           });
       },
       mapRow: (item) => ({ title: item.title, description: item.description }),
-      mapProp: (result) => {
-        return { index: result.index, label: result.description };
+      mapProp: (result,filters) => {
+        return { index: result.index, label: result.description ,...filters};
       },
       getItemSummary: (item) => item.label,
     },
