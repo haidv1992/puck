@@ -37,7 +37,7 @@ export const ExternalInput = ({
   readOnly?: boolean;
 }) => {
   const {
-    mapProp = (val: any) => val,
+    mapProp = (val: any,filters: object) => val,
     mapRow = (val: any) => val,
     filterFields,
   } = field || {};
@@ -47,8 +47,8 @@ export const ExternalInput = ({
   const [isLoading, setIsLoading] = useState(true);
 
   const hasFilterFields = !!filterFields;
-
-  const [filters, setFilters] = useState(field.initialFilters || {});
+  // @ts-ignore
+  const [filters, setFilters] = useState(field.initialFilters || value?.[name] || {});
   const [filtersToggled, setFiltersToggled] = useState(hasFilterFields);
 
   const mappedData = useMemo(() => {
@@ -266,7 +266,7 @@ export const ExternalInput = ({
                         style={{ whiteSpace: "nowrap" }}
                         className={getClassNameModal("tr")}
                         onClick={() => {
-                          onChange(mapProp(data[i]));
+                          onChange(mapProp(data[i],filters));
 
                           setOpen(false);
                         }}
